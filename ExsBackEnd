@@ -23,7 +23,7 @@ class Program
                 
             }
 
-            Console.WriteLine("Salario em 2018 será de {0}.", salario_base);
+            Console.WriteLine("Salario em 2018 será de {0}.", Math.Round(salario_base, 2));
 
         }  
     
@@ -37,6 +37,9 @@ class Program
         {
             int n, k;
             int n_primo = 1;
+            
+            // vetor para guardar a sequencia //
+             ArrayList n_primos = new ArrayList();
 
 
             // valores inicias e finais da sequencia //
@@ -52,19 +55,19 @@ class Program
             for (n = valor_inicial; n <= valor_final; n++)
             {
                
-
-                for (k = valor_inicial; k <= valor_final; k++)
-                {
-                    if (n % k == 0) {
-                        
-                        n_primo++;
-                    }
-                    else if (n_primo <= 2)
-                    {
-                        Console.WriteLine("{0}", n);
-                    }
-                }
-           }
+                // se for primo adiciona numero ao vetor //
+               if (n % n == 0)
+               {
+                   n_primo.Add(n);
+               }
+            } 
+            
+            foreach(var item in n_primos)
+            {
+                Console.Write(item + " ");
+            }
+                
+           
         }
     } 
   
@@ -84,7 +87,7 @@ class Program
             Console.WriteLine("\nInsira suas horas trabalhadas: ");
             double horas_trabalhadas = double.Parse(Console.ReadLine());
 
-            // Dado sobre o vlaor do salario minimo. //
+            // Dado sobre o valor do salario minimo. //
             Console.WriteLine("\nInsira o valor do salario minimo: ");
             double salario_minimo = double.Parse(Console.ReadLine());
              
@@ -122,15 +125,22 @@ Exercício 4:
                 Console.WriteLine("\nValor informado para area inválido.");
 
             }
-            else
+            else 
             {
                 // Cálculo do preço da tinta //
                 latas_de_tinta_util = metros_quad / tinta_em_mquad;
+                
+                // minimo de uma lata //
+                 if(latas_de_tinta_util < 1)
+                {
+                    latas_de_tinta_util = 1;
+                }
+
                 preco_tinta_util = latas_de_tinta_util * preco_da_tinta;
 
                 // Informa o valor e quantidade de tinta a ser usada //
-                Console.WriteLine("\nO valor da tinta será: {0}", preco_tinta_util);
-                Console.WriteLine("\nA quantidade de lata a ser usada será de: {0}", Math.Ceiling(latas_de_tinta_util));
+                Console.WriteLine("\nO valor da tinta será: {0}", Math.Round(preco_tinta_util, 2));
+                Console.WriteLine("\nA quantidade de lata a ser usada será de: {0}", Math.Ceiling(latas_de_tinta_util)););
             }
         }
     }
@@ -145,7 +155,7 @@ class ImplementConta
         public double Saldo;
 
             // Construtor //
-        public ImplementConta(int numero = 0, string nome = "sem nome", double saldo = 0.0)
+        public ImplementConta(int numero, string nome, double saldo = 0)
         {
             this.numero_da_conta = numero;
             this.nome_do_correntista = nome;
@@ -155,25 +165,68 @@ class ImplementConta
         // Declaração do Metodo //
         public void alterarNome(string nome)
         {
-            Console.WriteLine(nome);
+            this.nome_do_correntista = nome;
            
         }
         public void deposito(int num1)
         {
 
             Saldo = Saldo + num1;
-            Console.WriteLine(Saldo);
+           
         }
         public void saque(int num2)
         {
             Saldo = Saldo - num2;
-            Console.WriteLine(Saldo);
+            
         }
     }
     
     
 Exercício 6:
 
+Classe:
+
+ public class Retangulo
+    {
+        // valores em m^2 //
+        int lado1 = 1;
+        int lado2 = 2;
+        private int perim;
+
+        public int area { get; private set; }
+
+        public void MudaLado(int lado1, int lado2)
+        {
+            this.lado1 = lado1;
+
+            this.lado2 = lado2;
+        }
+        public int RetornaLado(string lado)
+        {
+            if (lado == "lado1")
+            {
+                return this.lado1;
+            }
+            else if (lado == "lado2")
+            {
+                return this.lado2;
+            }
+
+            return 0;
+        }
+        public int Area()
+        {
+            area = lado1 * lado2;
+            return area;
+        }
+        public int Perim()
+        {
+            perim = (lado1 * 2) + (lado2 * 2);
+            return perim;
+        }
+
+
+Programa:
 
 class Program
     {
