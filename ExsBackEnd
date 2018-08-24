@@ -1,0 +1,211 @@
+Exercicios Teste Técnico de Back-end
+
+Teste realizado em C#
+
+Exercício 1:
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            double salario_base = 1000;
+            double ajuste = 0.015;
+            int ano;
+            Console.WriteLine("Salario base para 2005: {0}.", salario_base);
+
+            salario_base = salario_base + salario_base * ajuste;
+
+            Console.WriteLine("Salario base para 2006: {0}.", salario_base);
+            
+            for (ano = 2007, ajuste=0.03; ano <= 2018; ano++, ajuste *= 2) 
+            {
+                salario_base = salario_base + salario_base * ajuste;
+                
+            }
+
+            Console.WriteLine("Salario em 2018 será de {0}.", salario_base);
+
+        }  
+    
+    }
+  
+Exercício 2:
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int n, k;
+            int n_primo = 1;
+
+
+            // valores inicias e finais da sequencia //
+            Console.WriteLine("Entre com o primeiro valor da sequencia: ");
+            int valor_inicial = int.Parse(Console.ReadLine());
+            Console.WriteLine("Entre com o valor final da sequencia: ");
+            int valor_final = int.Parse(Console.ReadLine());
+
+
+
+            // gerar uma sequencia do valor inicial até o final //
+
+            for (n = valor_inicial; n <= valor_final; n++)
+            {
+               
+
+                for (k = valor_inicial; k <= valor_final; k++)
+                {
+                    if (n % k == 0) {
+                        
+                        n_primo++;
+                    }
+                    else if (n_primo <= 2)
+                    {
+                        Console.WriteLine("{0}", n);
+                    }
+                }
+           }
+        }
+    } 
+  
+Exercício 3:
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            double salario_bruto;
+            double valor_hora;
+            double imposto = 0.03;
+            double salario_receber;
+
+
+            // Dado sobre o numero de horas trabalhadas. //
+            Console.WriteLine("\nInsira suas horas trabalhadas: ");
+            double horas_trabalhadas = double.Parse(Console.ReadLine());
+
+            // Dado sobre o vlaor do salario minimo. //
+            Console.WriteLine("\nInsira o valor do salario minimo: ");
+            double salario_minimo = double.Parse(Console.ReadLine());
+             
+            // Relações sobre as variaveis //    
+            valor_hora = salario_minimo * 0.10;
+            salario_bruto = horas_trabalhadas * valor_hora;
+            salario_receber = salario_bruto - salario_bruto * imposto;
+
+            // Informa o valor do salario a receber //
+            Console.WriteLine("\nO salario a ser recebido: {0}", salario_receber);
+
+        }
+    }
+    
+    
+Exercício 4:
+
+
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            double tinta_em_mquad = 54;
+            double latas_de_tinta_util;
+            double preco_da_tinta = 80;
+            double preco_tinta_util;
+
+            // Valor da area será dada em m^2 //
+            Console.WriteLine("\nDigite o valor da area a ser pintada: ");
+            double metros_quad = double.Parse(Console.ReadLine());
+
+            // Caso o usuario digite um valor negativo ou abaixo de zero para area //
+            if (metros_quad <= 0)
+            {
+                Console.WriteLine("\nValor informado para area inválido.");
+
+            }
+            else
+            {
+                // Cálculo do preço da tinta //
+                latas_de_tinta_util = metros_quad / tinta_em_mquad;
+                preco_tinta_util = latas_de_tinta_util * preco_da_tinta;
+
+                // Informa o valor e quantidade de tinta a ser usada //
+                Console.WriteLine("\nO valor da tinta será: {0}", preco_tinta_util);
+                Console.WriteLine("\nA quantidade de lata a ser usada será de: {0}", Math.Ceiling(latas_de_tinta_util));
+            }
+        }
+    }
+    
+Exercício 5:
+
+class ImplementConta
+    {
+        // Atributos para implementação da conta //
+        public int numero_da_conta;
+        public string nome_do_correntista;
+        public double Saldo;
+
+            // Construtor //
+        public ImplementConta(int numero = 0, string nome = "sem nome", double saldo = 0.0)
+        {
+            this.numero_da_conta = numero;
+            this.nome_do_correntista = nome;
+            this.Saldo = saldo;
+        } 
+       
+        // Declaração do Metodo //
+        public void alterarNome(string nome)
+        {
+            Console.WriteLine(nome);
+           
+        }
+        public void deposito(int num1)
+        {
+
+            Saldo = Saldo + num1;
+            Console.WriteLine(Saldo);
+        }
+        public void saque(int num2)
+        {
+            Saldo = Saldo - num2;
+            Console.WriteLine(Saldo);
+        }
+    }
+    
+    
+Exercício 6:
+
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int area_do_retangulo;
+            int area_piso;
+            int perim_piso;
+            int quant_rodap;
+            int medida_do_local;
+
+            // Inserir valor do local //
+            Console.WriteLine("\nInsira a primeira medida do local: ");
+            int medida1_do_local = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("\nInsira a segunda medida do local: ");
+            int medida2_do_local = int.Parse(Console.ReadLine());
+
+            medida_do_local = medida1_do_local * medida2_do_local;
+
+            // Busca do valor da area do piso //
+            retangulo take = new retangulo();
+
+            // Calculo da quantidade de piso necessário //
+            area_piso = take.Area();
+            area_do_retangulo = medida_do_local / area_piso;
+            Console.WriteLine("\nQuantidade de pisos será de: {0}",area_do_retangulo);
+
+            //Calculo da quantidade de rodapés //
+            perim_piso = take.Perim();
+            quant_rodap = ((medida1_do_local*2)+(medida2_do_local*2)) / perim_piso;
+            Console.WriteLine("\nQuantidade de rodapes será de: {0}", quant_rodap);
+
+        }
+    }
